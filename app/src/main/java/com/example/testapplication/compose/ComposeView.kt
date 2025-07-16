@@ -34,6 +34,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.testapplication.enums.NavBarPage
 import kotlinx.coroutines.flow.compose
 
 class MainActivity : ComponentActivity() {
@@ -60,15 +61,15 @@ fun MainNavigation(viewModel: ComposeViewModel) {
         bottomBar = {
             NavigationBar {
                 NavigationBarItem(
-                    selected = currentRoute == "home",
-                    onClick = { navController.navigate("home") },
-                    label = { Text("Home") },
+                    selected = currentRoute == NavBarPage.home.name,
+                    onClick = { navController.navigate(NavBarPage.home.name) },
+                    label = { Text(NavBarPage.home.text) },
                     icon = { Icon(Icons.Default.Home, contentDescription = null) }
                 )
                 NavigationBarItem(
-                    selected = currentRoute == "stats",
-                    onClick = { navController.navigate("stats") },
-                    label = { Text("Statistiche") },
+                    selected = currentRoute == NavBarPage.stats.name,
+                    onClick = { navController.navigate(NavBarPage.stats.name) },
+                    label = { Text(NavBarPage.stats.text) },
                     icon = { Icon(Icons.Default.Info, contentDescription = null) }
                 )
             }
@@ -76,11 +77,11 @@ fun MainNavigation(viewModel: ComposeViewModel) {
     ) { paddingValues ->
         NavHost(
             navController = navController,
-            startDestination = "home",
+            startDestination = NavBarPage.home.name,
             modifier = Modifier.padding(paddingValues)
         ) {
-            composable("home") { ListScreen(viewModel) }
-            composable("stats") { StatsScreen(viewModel) }
+            composable(NavBarPage.home.name) { ListScreen(viewModel) }
+            composable(NavBarPage.stats.name) { StatsScreen(viewModel) }
         }
     }
 }
@@ -96,7 +97,7 @@ fun StatsScreen(viewModel: ComposeViewModel) {
             .padding(16.dp)
     ) {
         Text(
-            text = "Statistiche",
+            text = NavBarPage.stats.text,
             style = MaterialTheme.typography.headlineMedium
         )
 
