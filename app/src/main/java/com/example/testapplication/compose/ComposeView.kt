@@ -36,7 +36,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.testapplication.enums.NavBarPage
 
-class MainActivity : ComponentActivity() {
+class ComposeMainActivity : ComponentActivity() {
 
     private val viewModel: ComposeViewModel by viewModels()
 

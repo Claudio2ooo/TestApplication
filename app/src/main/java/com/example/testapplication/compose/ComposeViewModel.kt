@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.update
 
 class ComposeViewModel : ViewModel() {
 
-    private val _clickIncrement = MutableStateFlow(1)
+    private val _clickIncrement = MutableStateFlow(500)
     val clickIncrement: StateFlow<Int> = _clickIncrement
 
     private val _clickCount = MutableStateFlow(0)
@@ -17,8 +17,12 @@ class ComposeViewModel : ViewModel() {
     val itemList: StateFlow<List<String>> = _itemList
 
     fun onButtonClick() {
-        _clickCount.update { it + clickIncrement.value }
-        val newItem = "Elemento ${_clickCount.value}"
-        _itemList.update { it + newItem }
+        _clickCount.update { it + 1 }
+        repeat(_clickIncrement.value) {
+            _clickCount.update { it + 1 }
+            val newItem = "Elemento ${_itemList.value.size+1}"
+            _itemList.update { it + newItem }
+        }
+
     }
 }
