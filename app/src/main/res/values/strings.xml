@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">TestApplication</string>
+    <string name="home_title">Esempio di UI in XML</string>
+    <string name="simple_button">Aggiungi\nn elementi</string>
+    <string name="image_button">Aggiungi\nn immagini</string>
+    <string name="stats_title">Statistiche</string>
+    <string name="click_count">Numero di click: 0</string>
+    <string name="simple_list_size">Elementi nella lista semplice: 0</string>
+    <string name="simple_reset_button">Svuota lista elementi</string>
+    <string name="image_list_size">Elementi nella lista immagini: 0</string>
+    <string name="image_reset_button">Svuota lista immagini</string>
+    <string name="home_nav">Home</string>
+    <string name="stats_nav">Stats</string>
 </resources>
