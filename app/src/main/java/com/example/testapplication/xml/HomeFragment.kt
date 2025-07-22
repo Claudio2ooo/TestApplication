@@ -11,13 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.testapplication.R
 import com.example.testapplication.adapter.SimpleTextAdapter
 import com.example.testapplication.model.ImageItem
+import com.example.testapplication.model.SharedState
 
 class HomeFragment : Fragment() {
-
-    private val itemList = mutableListOf<String>()
-    private val imageList = mutableListOf<ImageItem>()
-    private var clickCount = 0
-    private val clickIncrement = 10
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var textAdapter: SimpleTextAdapter
@@ -38,24 +34,27 @@ class HomeFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        textAdapter = SimpleTextAdapter(itemList)
-        imageAdapter = ImageAdapter(imageList)
+        textAdapter = SimpleTextAdapter(SharedState.itemList)
+        imageAdapter = ImageAdapter(SharedState.imageList)
+
+        addTextButton.text = "Aggiungi\n${SharedState.clickIncrement} elementi"
+        addImageButton.text = "Aggiungi\n${SharedState.clickIncrement} immagini"
 
         addTextButton.setOnClickListener {
-            clickCount++
-            repeat(clickIncrement) {
-                val newItem = "Elemento ${itemList.size + 1}"
-                itemList.add(newItem)
+            SharedState.clickCount++
+            repeat(SharedState.clickIncrement) {
+                val newItem = "Elemento ${SharedState.itemList.size + 1}"
+                SharedState.itemList.add(newItem)
             }
             recyclerView.adapter = textAdapter
             textAdapter.notifyDataSetChanged()
         }
 
         addImageButton.setOnClickListener {
-            clickCount++
-            repeat(clickIncrement) {
-                val newImage = ImageItem(imageList.size + 1, R.drawable.test)
-                imageList.add(newImage)
+            SharedState.clickCount++
+            repeat(SharedState.clickIncrement) {
+                val newImage = ImageItem(SharedState.imageList.size + 1, R.drawable.test)
+                SharedState.imageList.add(newImage)
             }
             recyclerView.adapter = imageAdapter
             imageAdapter.notifyDataSetChanged()

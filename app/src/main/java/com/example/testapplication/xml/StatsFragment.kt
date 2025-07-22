@@ -26,7 +26,7 @@ class StatsFragment : Fragment() {
         val imageItemCountText = view.findViewById<TextView>(R.id.text_image_list_size)
 
         clickText.text = "Numero di click: ${SharedState.clickCount}"
-        simpleItemCountText.text = "Elementi nella lista: ${SharedState.itemList.size}"
+        simpleItemCountText.text = "Elementi nella lista semplice: ${SharedState.itemList.size}"
         imageItemCountText.text = "Elementi nella lista immagini: ${SharedState.imageList.size}"
 
         view.findViewById<Button>(R.id.button_reset_simple).setOnClickListener {

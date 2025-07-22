@@ -19,8 +19,8 @@ class XMLMainActivity : AppCompatActivity() {
         val nav = findViewById<BottomNavigationView>(R.id.bottom_nav)
         nav.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.homeFragment -> loadFragment(HomeFragment())
-                R.id.statsFragment -> loadFragment(StatsFragment())
+                R.id.nav_home -> loadFragment(HomeFragment())
+                R.id.nav_stats -> loadFragment(StatsFragment())
             }
             true
         }

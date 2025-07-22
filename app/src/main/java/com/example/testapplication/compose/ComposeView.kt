@@ -46,7 +46,7 @@ import com.example.testapplication.model.ImageItem
 
 class ComposeMainActivity : ComponentActivity() {
 
-    private val viewModel: ComposeViewModel by viewModels()
+    val viewModel: ComposeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

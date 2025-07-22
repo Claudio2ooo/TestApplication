@@ -44,4 +44,8 @@ class ComposeViewModel : ViewModel() {
             _imageList.update { it + newItem }
         }
     }
+
+    fun setClickIncrement(value: Int) {
+        _clickIncrement.value = value
+    }
 }
